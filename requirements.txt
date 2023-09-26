@@ -1,5 +1,11 @@
 pytest==6.2.3
-yaml==6.0
+pyyaml
 netmiko
 pexpect
 paramiko
+pytest-clarity
+tabulate
+jinja2
+textfsm
+graphviz
+
