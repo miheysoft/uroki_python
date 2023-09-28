@@ -15,5 +15,6 @@
 """
 
 mac = "AAAA:BBBB:CCCC"
-mac_new = mac.replace(':', '.')
-print(mac_new)
+
+new_mac = mac.replace(":", ".")
+print(new_mac)
