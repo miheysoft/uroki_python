@@ -17,6 +17,5 @@
 
 mac = "AAAA:BBBB:CCCC"
 
-#mac_bin = bin(int(mac[0:3], 16)).lstrip('0b') + bin(int(mac[5:8], 16)).lstrip('0b') + bin(int(mac[10:13], 16)).lstrip('0b')
-mac_bin = bin(int(mac.replace(':', ''), 16)).lstrip('0b')
-print(mac_bin)
+bin_mac = "{:b}".format(int(mac.replace(":", ""), 16))
+print(bin_mac)
