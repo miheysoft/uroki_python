@@ -46,5 +46,7 @@ london_co = {
         "routing": True,
     },
 }
-name_ust= str(input('Введите имя устройства: '))
-print(london_co[name_ust])
+
+device = input("Введите имя устройства: ")
+
+print(london_co[device])
