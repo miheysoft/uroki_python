@@ -17,12 +17,6 @@ Mask:
 
 Проверить работу скрипта на разных комбинациях сеть/маска.
 
-Вывод сети и маски должен быть упорядочен также, как в примере:
-- столбцами
-- ширина столбца 10 символов (в двоичном формате
-  надо добавить два пробела между столбцами
-  для разделения октетов между собой)
-
 Подсказка: Получить маску в двоичном формате можно так:
 In [1]: "1" * 28 + "0" * 4
 Out[1]: '11111111111111111111111111110000'
@@ -30,30 +24,39 @@ Out[1]: '11111111111111111111111111110000'
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 """
-ip_net = input('Введите IP-сеть в формате: 10.1.1.0/24 ')
-network_mask = ip_net.split("/")
-octets = network_mask[0].split(".")
-mask = int(network_mask[1])
+
+network = input("Введите адрес сети: ")
+
+ip, mask = network.split("/")
+ip_list = ip.split(".")
+mask = int(mask)
+
+oct1, oct2, oct3, oct4 = [
+    int(ip_list[0]),
+    int(ip_list[1]),
+    int(ip_list[2]),
+    int(ip_list[3]),
+]
 
 bin_mask = "1" * mask + "0" * (32 - mask)
-mask_out = [
+m1, m2, m3, m4 = [
     int(bin_mask[0:8], 2),
     int(bin_mask[8:16], 2),
     int(bin_mask[16:24], 2),
     int(bin_mask[24:32], 2),
 ]
 
-output_ip = """
+ip_output = """
 Network:
-{0:<10}{1:<10}{2:<10}{3:<10}
-{0:08b}  {1:08b}  {2:08b}  {3:08b}
-"""
-output_mask = """
+{0:<8}  {1:<8}  {2:<8}  {3:<8}
+{0:08b}  {1:08b}  {2:08b}  {3:08b}"""
+
+mask_output = """
 Mask:
 /{0}
 {1:<8}  {2:<8}  {3:<8}  {4:<8}
 {1:08b}  {2:08b}  {3:08b}  {4:08b}
 """
 
-print(output_ip.format(int(octets[0]), int(octets[1]), int(octets[2]), int(octets[3])))
-print(output_mask.format(mask, mask_out[0], mask_out[1], mask_out[2], mask_out[3]))
+print(ip_output.format(oct1, oct2, oct3, oct4))
+print(mask_output.format(mask, m1, m2, m3, m4))
