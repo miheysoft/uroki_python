@@ -12,3 +12,10 @@
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 """
+ip = input('Введите IP-адрес ')
+ip_list = ip.split(".")
+ip_int = int(ip_list[0]) 
+if 1 >= ip_int <= 223:
+   type_adr = 'unicast'
+elif 224 >= ip_int <= 239:
+   type_adr = 'multicast'
