@@ -14,10 +14,20 @@ Outbound Interface    FastEthernet0/0
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 """
-result = {}
+d_keys = ['Prefix', 'AD/Metric', 'Next-Hop', 'Last update', 'Outbound Interface']
+result = dict.fromkeys(d_keys)
 
-with open('ospf.txt') as f:
+output = "\n{:25} {}"
+
+with open("ospf.txt", "r") as f:
     for line in f:
-        line_list = line.split()
-        print(line_list)
-        
+        route = line.replace(",", " ").replace("[", "").replace("]", "")
+        route = route.split()
+        del route[0], route[3]
+        i_list = 0
+        for keys in result:
+            result[keys] = route[i_list]
+            i_list += i_list
+            print(result[keys])
+            #print(output.format(result[keys]))
+            
