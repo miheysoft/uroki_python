@@ -1,31 +1,49 @@
 # -*- coding: utf-8 -*-
 """
-Задание 7.1
+Задание 7.2
 
-Обработать строки из файла ospf.txt и вывести информацию по каждой строке в таком
-виде на стандартный поток вывода:
+Создать скрипт, который будет обрабатывать конфигурационный файл config_sw1.txt.
+Имя файла передается как аргумент скрипту.
 
-Prefix                10.0.24.0/24
-AD/Metric             110/41
-Next-Hop              10.0.13.3
-Last update           3d18h
-Outbound Interface    FastEthernet0/0
+Скрипт должен возвращать на стандартный поток вывода команды из переданного
+конфигурационного файла, исключая строки, которые начинаются с '!'.
+
+Вывод должен быть без пустых строк.
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
+Пример вывода:
+$ python task_7_2.py config_sw1.txt
+Current configuration : 2033 bytes
+version 15.0
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+hostname sw1
+interface Ethernet0/0
+ duplex auto
+interface Ethernet0/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 100
+ switchport mode trunk
+ duplex auto
+ spanning-tree portfast edge trunk
+interface Ethernet0/2
+ duplex auto
+interface Ethernet0/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 100
+ duplex auto
+ switchport mode trunk
+ spanning-tree portfast edge trunk
+...
+
 """
+from sys import argv
 
-output = "\n{:25} {}" * 5
+filename = argv[1]
 
-with open("ospf.txt", "r") as f:
+with open(filename) as f:
     for line in f:
-        route = line.replace(",", " ").replace("[", "").replace("]", "")
-        route = route.split()
-
-        print(output.format(
-                "Prefix", route[1],
-                "AD/Metric", route[2],
-                "Next-Hop", route[4],
-                "Last update", route[5],
-                "Outbound Interface", route[6],
-        ))
+        if not line.startswith("!"):
+            print(line.rstrip())

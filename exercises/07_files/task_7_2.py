@@ -48,9 +48,3 @@ with open(config_file) as f:
         if not line.startswith('!'):
             print(line.strip())
  
-'''
-line.startswith('!'):
-Это выражение возвращает True, если строка начинается с символа «!», иначе — False.
-Метод strip() удаляет пробелы, включая пробельные символы, в начале и конце строки. Если строка была "  Hello world   ", 
-то после применения метода она станет "Hello world".
-'''
