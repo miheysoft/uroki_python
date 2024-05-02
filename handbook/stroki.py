@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 text1 = '''Привет, мир!'''
 print(text1)
 text2 = 'сбербанк рулит !'
