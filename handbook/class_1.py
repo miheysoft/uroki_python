@@ -23,4 +23,15 @@ class MyClass1:
 
 
 my_object1 = MyClass1()
-my_object1.my_other_method
+my_object1.my_other_method()
+
+
+class MyClass:
+    def __init__(self, name):
+        self.name = name
+
+    def say_hello(self):
+        print(f"Hello, {self.name}!")
+
+
+print(MyClass("John").say_hello())
