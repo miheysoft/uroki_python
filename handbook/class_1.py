@@ -35,3 +35,4 @@ class MyClass:
 
 
 print(MyClass("John").say_hello())
+print(MyClass.__name__)
