@@ -36,3 +36,8 @@ class MyClass:
 
 print(MyClass("John").say_hello())
 print(MyClass.__name__)
+
+
+class Family:
+    def __init__(self, surname):
+        self.surname = surname
