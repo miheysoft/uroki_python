@@ -41,3 +41,23 @@ print(MyClass.__name__)
 class Family:
     def __init__(self, surname):
         self.surname = surname
+
+    def speak(self):
+        print(f"Наша фамилия {self.surname}")
+
+
+class Child(Family):  # Название класса принято писать с заглавной буквы
+    def __init__(self, surname, name):
+        super().__init__(surname)
+        self.name = name
+
+    def speak(self):
+        print(f"Ребенка зовут {self.name}")
+        super().speak()
+
+
+# Пример использования классов
+child_instance = Child("Иванов", "Алексей")
+child_instance.speak()
+Family.speak(child_instance)
+print(child_instance.surname)
