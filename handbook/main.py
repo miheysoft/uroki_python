@@ -1,3 +1,3 @@
-import cat
+from cat import spick_cat
 
-cat.spick_cat()
+print(spick_cat())
