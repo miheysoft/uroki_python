@@ -1,4 +1,6 @@
-import sys, os
+import sys
+import os
+import subprocess
 
 for name, module in sys.modules.items():
     if module is None:
